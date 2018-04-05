@@ -3,7 +3,15 @@
 include("config.php");
 
 $description = "";
-$oper = !empty($_GET['oper']) ? $_GET['oper'] : null;
+
+if (empty($_GET['oper']))
+{
+    $oper = null;
+}else
+{
+    $_GET['oper'];
+}
+
 
 if (!isset($_GET['id']) && isset($_POST['save']) && !empty($_POST['description'])) {
     $description = $_POST['description'];
@@ -13,7 +21,7 @@ if (!isset($_GET['id']) && isset($_POST['save']) && !empty($_POST['description']
         $description
     ]);
 
-    header("Loc: /emikhachev/lesson4-2/taskmanager.php", true, 302);
+    header("Loc: /emikhachev/lesson4-2/taskmanager.php");
 }
 
 if (!empty($oper) && !empty($_GET['id'])) {
@@ -34,7 +42,7 @@ if (!empty($oper) && !empty($_GET['id'])) {
             $id
         ]);
 
-        header("Loc: /emikhachev/lesson4-2/taskmanager.php", true, 302);
+        header("Loc: /emikhachev/lesson4-2/taskmanager.php");
     }
 
     if (!empty($_POST['description'])) {
@@ -47,7 +55,7 @@ if (!empty($oper) && !empty($_GET['id'])) {
             $id
         ]);
 
-        header("Loc: /emikhachev/lesson4-2/taskmanager.php", true, 302);
+        header("Loc: /emikhachev/lesson4-2/taskmanager.php");
     }
 
     if ($oper == 'edit') {

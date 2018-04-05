@@ -3,15 +3,13 @@
 include("config.php");
 
 $description = "";
-
-if (empty($_GET['oper']))
+if (empty($_GET['operation']))
 {
     $oper = null;
-}else
+} else
 {
-    $_GET['oper'];
+    $oper = $_GET['oper'];
 }
-
 
 if (!isset($_GET['id']) && isset($_POST['save']) && !empty($_POST['description'])) {
     $description = $_POST['description'];
@@ -87,13 +85,13 @@ $tasks = $stm->fetchAll();
     <div>
         <form method="POST">
             <input type="text" name="description" placeholder="Задача" value="<?=$description?>" />
-            <input type="submit" name="save" value="<?php echo ($oper == 'edit' ? 'Введите новое описание' : 'Добавить') ?>" />
+            <input type="submit" name="newtask" value="<?php echo ($oper == 'edit' ? 'Введите новое занчение' : 'Добавить') ?>" />
         </form>
     </div>
 
 
     <table margin='1'>
-        echo  <tr>
+        <tr>
             <th>Описание задачи</th>
             <th>Дата добавления</th>
             <th>Статус</th>

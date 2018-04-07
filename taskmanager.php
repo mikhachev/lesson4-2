@@ -3,7 +3,7 @@
 include("config.php");
 
 $description = "";
-if (empty($_GET['operation']))
+if (empty($_GET['oper']))
 {
     $oper = null;
 } else
@@ -19,8 +19,9 @@ if (!isset($_GET['id']) && isset($_POST['save']) && !empty($_POST['description']
         $description
     ]);
 
-    header("Loc: /emikhachev/lesson4-2/taskmanager.php");
+    header("Loc: /emikhachev/lesson4-3/tasksmanager.php");
 }
+
 
 if (!empty($oper) && !empty($_GET['id'])) {
     $id = (int)$_GET['id'];
@@ -40,7 +41,7 @@ if (!empty($oper) && !empty($_GET['id'])) {
             $id
         ]);
 
-        header("Loc: /emikhachev/lesson4-2/taskmanager.php");
+        header("Location: /emikhachev/lesson4-3/tasksmanager.php");
     }
 
     if (!empty($_POST['description'])) {
@@ -53,7 +54,7 @@ if (!empty($oper) && !empty($_GET['id'])) {
             $id
         ]);
 
-        header("Loc: /emikhachev/lesson4-2/taskmanager.php");
+        header("Location: /emikhachev/lesson4-3/tasksmanager.php");
     }
 
     if ($oper == 'edit') {
@@ -85,7 +86,7 @@ $tasks = $stm->fetchAll();
     <div>
         <form method="POST">
             <input type="text" name="description" placeholder="Задача" value="<?=$description?>" />
-            <input type="submit" name="newtask" value="<?php echo ($oper == 'edit' ? 'Введите новое занчение' : 'Добавить') ?>" />
+            <input type="submit" name="save" value="<?php echo ($oper == 'edit' ? 'Введите новое значение' : 'Добавить') ?>" />
         </form>
     </div>
 
